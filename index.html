@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Till min älskling ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@400;500;600&display=swap');
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;overflow-x:hidden;
+  font-family:Poppins,sans-serif;color:#713b52;
+  background:linear-gradient(135deg,#ffd5e5 0%,#fff7fa 48%,#ffc1d9 100%);
+}
+.bg{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.heart{position:absolute;bottom:-70px;animation:floatUp linear infinite;opacity:0}
+@keyframes floatUp{
+  0%{transform:translateY(0) rotate(0);opacity:0}
+  10%{opacity:.75}90%{opacity:.55}
+  100%{transform:translateY(-115vh) rotate(30deg);opacity:0}
+}
+.sparkle{position:absolute;animation:twinkle 2.5s ease-in-out infinite}
+@keyframes twinkle{50%{transform:scale(1.7);opacity:.35}}
+
+#envelopeScreen{
+  position:relative;z-index:2;min-height:100vh;
+  display:grid;place-items:center;padding:25px;
+  text-align:center;transition:opacity .8s,transform .8s;
+}
+#envelopeScreen.hide{opacity:0;transform:scale(1.08);pointer-events:none}
+.welcome{max-width:700px}
+.small-title{font:600 27px 'Dancing Script',cursive;color:#c94b79}
+.welcome h1{
+  margin:5px 0 4px;color:#c43e72;
+  font:700 clamp(48px,11vw,86px) 'Dancing Script',cursive;
+}
+.subtitle{font-size:17px;color:#92566d;margin:0 0 28px}
+.envelope{
+  width:min(82vw,360px);height:235px;margin:0 auto 26px;
+  position:relative;cursor:pointer;
+  filter:drop-shadow(0 22px 28px rgba(157,54,92,.22));
+  transition:transform .25s;
+}
+.envelope:hover{transform:translateY(-7px) rotate(-1deg)}
+.env-back{
+  position:absolute;inset:0;background:#f58bb0;border-radius:12px;
+}
+.env-paper{
+  position:absolute;left:9%;right:9%;top:8%;height:78%;
+  background:#fffdfd;border-radius:8px;
+  box-shadow:0 5px 12px #8e38521b;
+  display:flex;align-items:center;justify-content:center;
+  font:700 35px 'Dancing Script',cursive;color:#c94374;
+}
+.env-left,.env-right,.env-bottom{
+  position:absolute;bottom:0;width:0;height:0;border-style:solid;
+}
+.env-left{left:0;border-width:0 0 170px 180px;border-color:transparent transparent #ee719d transparent}
+.env-right{right:0;border-width:170px 0 0 180px;border-color:transparent transparent transparent #ed78a3}
+.env-bottom{
+  left:0;bottom:0;border-width:0 180px 125px 180px;
+  border-color:transparent transparent #f27fa7 transparent;
+  z-index:3;
+}
+.env-top{
+  position:absolute;left:0;top:0;width:0;height:0;
+  border-left:180px solid transparent;border-right:180px solid transparent;
+  border-top:125px solid #fa9cba;z-index:4;
+  transform-origin:top;transition:transform .9s;
+}
+.envelope.open .env-top{transform:rotateX(180deg);z-index:1}
+.seal{
+  position:absolute;z-index:6;left:50%;top:50%;
+  transform:translate(-50%,-50%);width:68px;height:68px;border-radius:50%;
+  display:grid;place-items:center;background:#d84b80;color:#fff;
+  font-size:29px;box-shadow:0 5px 15px #7d2e4d33;transition:.5s;
+}
+.envelope.open .seal{opacity:0;transform:translate(-50%,-50%) scale(1.4)}
+.open-text{font-size:15px;color:#9c5872}
+.teddy{font-size:80px;margin-top:12px;animation:bob 2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-9px) rotate(2deg)}}
+
+#letterScreen{display:none;position:relative;z-index:2;padding:34px 14px 80px}
+#letterScreen.show{display:block;animation:reveal 1.1s ease both}
+@keyframes reveal{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:none}}
+.letter{
+  max-width:830px;margin:auto;background:rgba(255,250,252,.96);
+  border:2px solid #f2aec7;border-radius:30px;
+  padding:clamp(27px,6vw,62px);
+  box-shadow:0 28px 75px rgba(132,45,78,.18);
+  position:relative;
+}
+.letter:before,.letter:after{position:absolute;color:#f18aaf;font-size:30px}
+.letter:before{content:"♥";top:17px;left:22px}.letter:after{content:"♥";bottom:17px;right:22px}
+.top-teddy{text-align:center;font-size:75px;animation:bob 2.2s ease-in-out infinite}
+h2{
+  text-align:center;color:#c43e72;margin:4px 0 28px;
+  font:700 clamp(42px,9vw,64px) 'Dancing Script',cursive;
+}
+p{font-size:16px;line-height:1.9;margin:0 0 20px}
+.divider{text-align:center;color:#e36d98;font-size:22px;letter-spacing:8px;margin:28px 0}
+.highlight{
+  background:#fff0f5;border-radius:18px;padding:18px 20px;
+  text-align:center;color:#c43e72;font-size:19px;
+}
+.end{text-align:center;color:#c43e72;font:700 36px 'Dancing Script',cursive;margin-top:36px}
+.music{
+  position:sticky;bottom:12px;z-index:8;max-width:410px;margin:22px auto 0;
+  background:rgba(255,255,255,.94);border:1px solid #efb0c7;border-radius:24px;
+  padding:11px 14px;box-shadow:0 12px 32px rgba(112,39,69,.17);
+  backdrop-filter:blur(10px);
+}
+.music-label{text-align:center;font-size:12px;color:#9b5870;margin-bottom:4px}
+audio{width:100%;height:35px}
+.note{text-align:center;font-size:12px;color:#a45d76;margin-top:18px}
+@media(max-width:600px){
+ .envelope{transform:scale(.86);margin-top:-8px;margin-bottom:8px}
+ .envelope:hover{transform:scale(.86) translateY(-5px)}
+ p{font-size:15px;line-height:1.82}
+ .letter{border-radius:23px}
+ .top-teddy{font-size:64px}
+}
+</style>
+</head>
+<body>
+<div class="bg" id="bg"></div>
+
+<section id="envelopeScreen">
+  <div class="welcome">
+    <div class="small-title">Ett litet brev till dig...</div>
+    <h1>Min älskling ❤️</h1>
+    <p class="subtitle">Jag har sparat något speciellt till din födelsedag.</p>
+    <div class="envelope" id="envelope" onclick="openLetter()" aria-label="Öppna brevet">
+      <div class="env-back"></div>
+      <div class="env-paper">Till Adam ❤️</div>
+      <div class="env-left"></div><div class="env-right"></div><div class="env-bottom"></div>
+      <div class="env-top"></div>
+      <div class="seal">♥</div>
+    </div>
+    <div class="open-text">Tryck på kuvertet för att öppna 💌</div>
+    <div class="teddy">🧸</div>
+  </div>
+</section>
+
+<section id="letterScreen">
+<article class="letter">
+  <div class="top-teddy">🧸💗</div>
+  <h2>Grattis på födelsedagen, Adam ❤️</h2>
+
+  <p><strong>Till min älskling, grattis på födelsedagen ❤️</strong></p>
+  <p>Grattis på födelsedagen till personen som på så kort tid har lyckats få en så otroligt stor plats i mitt hjärta. ❤️</p>
+  <p>Ibland tänker jag på hur sjukt det egentligen är att vi inte har känt varandra särskilt länge, för det känns verkligen inte så. Det känns som att jag har känt dig mycket längre. Som att du på något sätt har funnits i mitt liv mycket längre än du faktiskt har gjort. På så kort tid har vi hunnit komma varandra så nära, lära känna varandra, förstå varandra och skapa så många känslor tillsammans. Och det finaste av allt är att det har känts så naturligt.</p>
+  <p>Jag trodde verkligen inte att jag skulle träffa någon som du. Någon som jag kan känna igen mig så mycket i, någon som tänker på liknande sätt som jag, någon som kan få mig att skratta när jag behöver det och samtidigt få mig att känna mig trygg bara genom att finnas där. Det är nästan som att vi förstår varandra på ett sätt som jag inte riktigt kan förklara med ord.</p>
+  <p>Och jag älskar verkligen hur lika vi är. Våra personligheter, sättet vi tänker på, hur vi kan reta varandra, skratta åt samma saker och ibland nästan säga exakt samma sak. 😂❤️ Det är något jag verkligen tycker om med oss. Det känns som att vi kan vara oss själva med varandra utan att behöva låtsas eller försöka vara någon annan.</p>
+  <p>Du har blivit en person som jag vill berätta saker för. En person jag vill prata med när något bra händer, men också när något känns jobbigt. Du är en av de första personerna jag tänker på när jag vaknar och en av de sista jag tänker på innan jag somnar. Och jag tror inte ens att du riktigt förstår hur mycket du betyder för mig.</p>
+  <p>Just nu är det inte alltid lätt att ha distans mellan oss. Jag önskar så många gånger att jag bara kunde vara bredvid dig istället för att behöva sakna dig på avstånd. Jag önskar att jag kunde krama dig när jag saknar dig, skratta med dig på riktigt och bara få vara nära dig utan att behöva räkna dagarna tills att vi ses. Men även om avståndet ibland känns jobbigt så är jag ändå så glad att det är just du som jag får sakna.</p>
+
+  <div class="divider">♥ ♥ ♥</div>
+  <div class="highlight"><strong>För det är dig jag vill vänta på. ❤️</strong></div>
+
+  <p>Och varje gång jag saknar dig tänker jag på alla stunder vi fortfarande har framför oss. Alla skratt vi inte har skrattat åt än, alla samtal vi inte har haft, alla minnen vi inte har hunnit skapa och alla gånger vi kommer få vara tillsammans utan att behöva säga hejdå.</p>
+  <p>Det är faktiskt ganska fint att tänka på att trots att vi redan betyder så mycket för varandra, så har vi fortfarande så otroligt mycket kvar att uppleva tillsammans.</p>
+  <p>Jag vill att du ska veta att jag är så otroligt tacksam för dig. Tacksam för att du kom in i mitt liv. Tacksam för alla gånger du fått mig att le. Tacksam för alla våra samtal, våra skämt, våra små stunder och för alla gånger du fått mig att känna mig älskad. ❤️</p>
+  <p>Jag älskar dig för den du är. Inte för att du behöver vara perfekt, utan för att du är du. Jag älskar ditt sätt att vara, ditt sätt att prata med mig, ditt sätt att få mig att känna mig speciell och alla de små sakerna som kanske verkar obetydliga för dig men som betyder jättemycket för mig.</p>
+  <p>Och även om vi fortfarande har mycket kvar att lära oss om varandra så känns det som att jag redan fått se så många sidor av dig. Jag hoppas att jag får fortsätta lära känna varje liten del av dig och vara med genom både bra och dåliga dagar.</p>
+  <p>På din födelsedag önskar jag egentligen bara att du ska förstå hur värdefull du är. Jag hoppas att du får känna dig lika älskad och uppskattad som du får mig att känna mig. Du förtjänar en dag fylld med lycka, skratt och människor som älskar dig.</p>
+  <p>Och jag hoppas att du vet att någonstans, trots avståndet mellan oss, finns det en person som tänker extra mycket på dig idag. Jag. ❤️</p>
+  <p>Jag önskar att jag kunde vara där och fira dig på riktigt. Ge dig världens största kram, se dig le och göra din dag ännu lite finare. Men tills jag kan göra det får du nöja dig med att veta att mitt hjärta är med dig, även när jag inte kan vara det.</p>
+  <p>Jag vet inte exakt vad framtiden kommer att se ut som, men jag vet att jag är väldigt glad att du är en del av min nutid. Och jag hoppas verkligen att vi får fortsätta vara en del av varandras framtid också. ❤️</p>
+  <p>Så grattis på födelsedagen, min älskling.</p>
+  <p>Tack för att du är du. Tack för att du kom in i mitt liv. Tack för att du fått mig att känna så mycket på så kort tid.</p>
+  <p>Jag älskar dig mer än vad jag egentligen kan få ner i ett brev. Och oavsett hur långt ifrån varandra vi är just nu, så kommer du alltid att ha en alldeles speciell plats hos mig.</p>
+  <p><strong>Grattis på födelsedagen, min älskling. ❤️🥹</strong></p>
+
+  <div class="divider">♡ ♥ ♡</div>
+  <div class="end">Seni çok seviyorum ❤️</div>
+
+  <div class="music">
+    <div class="music-label">🎵 En låt till dig, min älskling ❤️</div>
+    <audio id="song" controls loop preload="auto">
+      <source src="Böyle Sever.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+  <div class="note">Med hela mitt hjärta. 💗</div>
+</article>
+</section>
+
+<script>
+const bg=document.getElementById('bg');
+for(let i=0;i<28;i++){
+  const e=document.createElement('span');
+  e.className='heart';
+  e.textContent=['❤️','💕','💗','💖','♡','💘'][Math.floor(Math.random()*6)];
+  e.style.left=Math.random()*100+'%';
+  e.style.fontSize=(15+Math.random()*28)+'px';
+  e.style.animationDuration=(7+Math.random()*10)+'s';
+  e.style.animationDelay=(-Math.random()*15)+'s';
+  bg.appendChild(e);
+}
+for(let i=0;i<14;i++){
+  const s=document.createElement('span');
+  s.className='sparkle';
+  s.textContent='✦';
+  s.style.left=Math.random()*100+'%';
+  s.style.top=Math.random()*100+'%';
+  s.style.fontSize=(10+Math.random()*12)+'px';
+  s.style.animationDelay=Math.random()*2+'s';
+  bg.appendChild(s);
+}
+function openLetter(){
+  const env=document.getElementById('envelope');
+  const song=document.getElementById('song');
+  env.classList.add('open');
+  song.play().catch(()=>{});
+  setTimeout(()=>{
+    document.getElementById('envelopeScreen').classList.add('hide');
+    document.getElementById('letterScreen').classList.add('show');
+    setTimeout(()=>window.scrollTo({top:0,behavior:'smooth'}),100);
+  },700);
+}
+</script>
+</body>
+</html>
